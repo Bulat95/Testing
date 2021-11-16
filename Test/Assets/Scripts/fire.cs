@@ -7,19 +7,20 @@ public class fire : MonoBehaviour
     public GameObject bullet;
     Rigidbody rbBullet;
     public GameObject spawnBullet;
-    float speed = 10f;
+    float speed = 100f;
     void Start()
     {
         rbBullet = bullet.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1")) 
+        if (Input.GetMouseButton(0)) 
         {
             Instantiate(bullet, spawnBullet.transform);
-            rbBullet.velocity = new Vector3(0, 0, speed);
+            rbBullet.velocity = new Vector3(0, 0, Time.deltaTime);
+
+            //rbBullet.AddForce(transform.localScale * speed * Time.deltaTime);
         }
     }
 }
